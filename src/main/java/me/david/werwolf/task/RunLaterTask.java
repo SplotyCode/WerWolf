@@ -13,4 +13,9 @@ public class RunLaterTask extends Task {
     boolean isReady() {
         return System.currentTimeMillis() >= ready;
     }
+
+    @Override
+    void onCall() {
+        TaskManager.getInstance().getTasks().remove(this);
+    }
 }
