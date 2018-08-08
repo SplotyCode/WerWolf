@@ -1,7 +1,15 @@
 language: java
 sudo: false
 
-script: "mvnw clean test install"
+
+jdk:
+- oraclejdk8
+# would just use default install/script but the ./mvnw script errors on travis
+# obviously this only works for maven builds right now...
+install:
+- mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+script:
+- mvn test
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
