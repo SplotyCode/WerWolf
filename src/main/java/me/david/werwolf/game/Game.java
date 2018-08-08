@@ -27,7 +27,7 @@ public class Game {
         return !(state instanceof LobbyState);
     }
 
-    public void switchStae(State newState) {
+    public void switchState(State newState) {
         state.onDisable(this);
         state = newState;
         state.onEnable(this);

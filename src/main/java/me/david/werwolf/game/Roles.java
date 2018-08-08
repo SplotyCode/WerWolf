@@ -6,8 +6,6 @@ public enum Roles {
     HEXE,
     DORFIDIOT,
     SEHERIN,
-    //TODO Maby remove?
-    SPICKERIN,
     JÄGER,
     DIEB,
     ARMOR

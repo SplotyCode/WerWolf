@@ -2,11 +2,10 @@ package me.david.werwolf.game.states;
 
 import me.david.werwolf.game.Game;
 
-public class ArmorPickState extends GameState {
+public class WerWolfState extends GameState {
 
-
-    public ArmorPickState() {
-        super("Armor");
+    public WerWolfState() {
+        super("WerWolf Choosng...");
     }
 
     @Override

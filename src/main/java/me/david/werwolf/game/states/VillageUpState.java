@@ -9,17 +9,26 @@ public class VillageUpState extends GameState {
 
     private static final long VILLAGE_DELAY = 15000;
 
-    public VillageUpState() {
+    private boolean rubber;
+
+    public VillageUpState(boolean rubber) {
         super("Village Up");
+        this.rubber = rubber;
     }
 
     @Override
     public void onEnable(Game game) {
         game.setRound(game.getRound() + 1);
         TaskManager.getInstance().registerTask(new RunLaterTask(true, () -> {
-            if (game.getSingleRolePlayers().containsKey(Roles.ARMOR) && game.isFirstRound()) {
-
+            if (!rubber && game.getSingleRolePlayers().containsKey(Roles.ARMOR) && game.isFirstRound()) {
+                game.switchState(new ArmorPickState());
+                return;
             }
+            if (!rubber && game.getSingleRolePlayers().containsKey(Roles.DIEB)) {
+                game.switchState(new RuberState());
+                return;
+            }
+            game.switchState(new WerWolfState());
         }, VILLAGE_DELAY));
     }
 
